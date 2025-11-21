@@ -1,0 +1,47 @@
+{
+    "editor.editContext": false,
+    "workbench.colorTheme": "Iceberg",
+    "workbench.iconTheme": "material-icon-theme",
+    "files.trimTrailingWhitespace": true,
+    "editor.lineNumbers": "on",
+    "editor.cursorBlinking": "smooth",
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.useCtrlKeys": true,
+    "vim.highlightedyank.enable": true,
+    "vim.foldfix": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["u"],
+            "commands": [{"command": "undo"}]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": [{"command": "redo"}]
+        },
+
+
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": [";", ";"],
+            "commands": ["editor.action.triggerSuggest"]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        }
+    ],
+    "editor.minimap.enabled": false
+}

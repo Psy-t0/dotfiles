@@ -1,0 +1,50 @@
+
+line-length = 128
+indent-width = 4
+
+[lint]
+preview = true
+
+select = ["ALL"]
+
+ignore = [
+    "DTZ",
+    "D",
+    "S",
+    "T201",
+    "T203",
+    "CPY001"
+    "RUF001",
+    "ERA001",
+    "INP001",
+]
+
+fixable = [
+    "E",
+    "I001",
+    "Q000",
+    "RUF022",
+    "E101",
+    "E114",
+    "E117",
+    "E201",
+    "E202",
+    "E203",
+    "E221",
+    "E222",
+    "E225",
+    "E226",
+    "E228",
+    "E231",
+    "E241",
+    "E261",
+    "E265",
+    "E271",
+    "E272",
+    "E302",
+    "E303",
+]
+
+[format]
+indent-style = "space"
+quote-style = "double"
