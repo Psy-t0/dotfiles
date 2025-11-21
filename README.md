@@ -2,3 +2,8 @@
 ```bash
     code --list-extensions > extensions.txt
 ```
+
+* txtをもとに拡張機能をインストール。
+```bash
+    cat code/extensions.txt | xargs -n 1 code --install-extension
+```

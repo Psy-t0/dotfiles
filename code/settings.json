@@ -19,9 +19,7 @@
         {
             "before": ["<C-r>"],
             "commands": [{"command": "redo"}]
-        },
-
-
+        }
     ],
     "vim.insertModeKeyBindingsNonRecursive": [
         {
@@ -31,7 +29,7 @@
         {
             "before": [";", ";"],
             "commands": ["editor.action.triggerSuggest"]
-        },
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {

@@ -4,7 +4,6 @@ github.copilot-chat
 github.remotehub
 google.gemini-cli-vscode-ide-companion
 google.geminicodeassist
-harg.iceberg
 ms-ceintl.vscode-language-pack-ja
 ms-python.debugpy
 ms-python.python
