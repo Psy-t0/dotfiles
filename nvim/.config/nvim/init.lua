@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
@@ -14,6 +16,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = { delay = 300 },
+    },
     {
         "neovim/nvim-lspconfig",
     },
@@ -66,9 +73,6 @@ vim.lsp.config("*", {
 })
 
 
-vim.g.mapleader = " "
-
-
 vim.cmd("syntax on")
 
 vim.opt.termguicolors = true
@@ -81,23 +85,23 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.clipboard = "unnamedplus"
 
-vim.keymap.set("i", "jj", "<Esc>")
-vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
+vim.keymap.set("i", "jj", "<Esc>", { desc = "挿入モードを終了" })
+vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>", { desc = "ファイルを検索" })
 -- 警告詳細
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "診断の詳細を表示" })
 -- Code Action（VSCodeの Ctrl+. に近い）
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "コードアクション" })
 -- 定義へ移動
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "定義へ移動" })
 -- ホバー説明
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "ホバー情報を表示" })
 
-vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle<cr>")
+vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle<cr>", { desc = "ファイルツリーを切り替え" })
 
-vim.keymap.set("n", "<M-h>", "<C-w>h")
-vim.keymap.set("n", "<M-j>", "<C-w>j")
-vim.keymap.set("n", "<M-k>", "<C-w>k")
-vim.keymap.set("n", "<M-l>", "<C-w>l")
+vim.keymap.set("n", "<M-h>", "<C-w>h", { desc = "左のウィンドウへ移動" })
+vim.keymap.set("n", "<M-j>", "<C-w>j", { desc = "下のウィンドウへ移動" })
+vim.keymap.set("n", "<M-k>", "<C-w>k", { desc = "上のウィンドウへ移動" })
+vim.keymap.set("n", "<M-l>", "<C-w>l", { desc = "右のウィンドウへ移動" })
 
 vim.lsp.enable("ruff")
 vim.lsp.enable("basedpyright")
