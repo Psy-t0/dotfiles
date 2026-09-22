@@ -7,6 +7,22 @@
 ```bash
     cat code/extensions.txt | xargs -n 1 code --install-extension
 ```
+## Bash
+
+`bash/.bashrc`をGNU Stowで`~/.bashrc`にリンクする。
+リポジトリのルートで実行する（既存の設定は先にバックアップする）。
+
+```bash
+if [ -e ~/.bashrc ] && [ ! -L ~/.bashrc ]; then
+    mv -i ~/.bashrc ~/.bashrc.before-stow
+fi
+stow --target="$HOME" bash
+```
+
+対話的なターミナルの起動時に、`fastfetch`でOSロゴとシステム情報を表示する。
+fastfetchが未インストールの場合や、出力が端末でない場合、`TERM=dumb`の場合は表示しない。
+反映は新しいターミナルを開くか、`source ~/.bashrc`を実行する。
+
 ## SSH
 
 `ssh/.ssh/config`をGNU Stowで`~/.ssh/config`にリンクする。
