@@ -23,6 +23,37 @@ stow --target="$HOME" bash
 fastfetchが未インストールの場合や、出力が端末でない場合、`TERM=dumb`の場合は表示しない。
 反映は新しいターミナルを開くか、`source ~/.bashrc`を実行する。
 
+## Oh My Posh
+
+Bashのプロンプトを、ユーザー・ホスト名、フォルダ、Git状態を示す色付きの帯で表示する。
+Gitの帯は変更がなければ緑、未コミットの変更があれば黄色になる。
+2行目でコマンドを入力する。
+
+[公式のLinuxインストール手順](https://ohmyposh.dev/docs/installation/linux)で本体を導入する。
+Stowは設定のみをリンクするため、別の端末でも本体のインストールが必要。
+
+```bash
+mkdir -p ~/.local/bin
+curl -fsSL https://ohmyposh.dev/install.sh -o /tmp/oh-my-posh-install.sh
+bash /tmp/oh-my-posh-install.sh -d ~/.local/bin
+stow --no-folding --target="$HOME" oh-my-posh
+stow --target="$HOME" bash
+exec bash
+```
+
+既存の `~/.config/oh-my-posh/theme.omp.json` がある場合は、先にバックアップする。
+`~/.local/bin`をPATHに含め、ターミナルのフォントには
+`JetBrainsMono Nerd Font Mono`などのNerd Fontを指定する。
+`XDG_CONFIG_HOME`を変更している場合は、そのディレクトリに設定を配置する。
+
+テーマは`oh-my-posh/.config/oh-my-posh/theme.omp.json`で管理する。
+本体または設定がない環境では通常のBashプロンプトを使用する。
+
+Gitの鉛筆アイコンは作業ツリー、チェック付きアイコンはステージ済みの変更を表す。
+件数の前の`~`は変更、`+`は追加、`-`は削除、`?`は未追跡、`x`は競合。
+`↑` / `↓`は追跡先より先行 / 遅延しているコミット数を表す。
+追跡先との差はローカル情報で比較する（自動fetchは行わない）。
+
 ## SSH
 
 `ssh/.ssh/config`をGNU Stowで`~/.ssh/config`にリンクする。
