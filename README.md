@@ -30,4 +30,23 @@ stow --no-folding --target="$HOME" ssh
 `IdentityFile`には鍵のパスだけを記載し、鍵自体は各端末の`~/.ssh`に置く。
 `ssh/.ssh/`内は`config`と`.gitignore`以外をGitの対象外にしている。
 
+## tmux
+
+`tmux/.tmux.conf`をGNU Stowで`~/.tmux.conf`にリンクする。
+リポジトリのルートで実行する（既存の設定は先にバックアップする）。
+
+```bash
+if [ -e ~/.tmux.conf ] && [ ! -L ~/.tmux.conf ]; then
+    mv -i ~/.tmux.conf ~/.tmux.conf.before-stow
+fi
+stow --target="$HOME" tmux
+```
+
+Alt＋矢印キーでペインを移動できる。
+起動中のtmuxに設定を反映する場合は、次を実行する。
+
+```bash
+tmux source-file ~/.tmux.conf
+```
+
 ## VS Code
