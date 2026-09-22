@@ -128,9 +128,7 @@ if [[ -t 1 && "${TERM:-dumb}" != dumb ]] && command -v fastfetch >/dev/null 2>&1
     fastfetch
 fi
 
-# Initialize Oh My Posh after PATH setup and startup output.
-posh_config="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-posh/theme.omp.json"
-if [[ "${TERM:-dumb}" != dumb ]] && [ -r "$posh_config" ] && command -v oh-my-posh >/dev/null 2>&1; then
-    eval "$(oh-my-posh init bash --config "$posh_config")"
+# Initialize Starship after PATH setup and startup output.
+if [[ "${TERM:-dumb}" != dumb ]] && command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
 fi
-unset posh_config
