@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -43,7 +45,13 @@ require("lazy").setup({
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+    },
+    {
         "nvim-neo-tree/neo-tree.nvim",
+        enabled = false,
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -96,7 +104,7 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "定義へ移動" })
 -- ホバー説明
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "ホバー情報を表示" })
 
-vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle<cr>", { desc = "ファイルツリーを切り替え" })
+vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<cr>", { desc = "ファイルツリーを切り替え" })
 
 vim.keymap.set("n", "<M-h>", "<C-w>h", { desc = "左のウィンドウへ移動" })
 vim.keymap.set("n", "<M-j>", "<C-w>j", { desc = "下のウィンドウへ移動" })
@@ -106,4 +114,3 @@ vim.keymap.set("n", "<M-l>", "<C-w>l", { desc = "右のウィンドウへ移動"
 vim.lsp.enable("ruff")
 vim.lsp.enable("basedpyright")
 vim.cmd("colorscheme nightfox")
-
