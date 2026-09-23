@@ -126,11 +126,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Show the OS logo and system information in interactive terminals.
-if [[ -t 1 && "${TERM:-dumb}" != dumb ]] && command -v fastfetch >/dev/null 2>&1; then
-    fastfetch
-fi
-
 # Initialize Starship after PATH setup and startup output.
 if [[ "${TERM:-dumb}" != dumb ]] && command -v starship >/dev/null 2>&1; then
     eval "$(starship init bash)"
