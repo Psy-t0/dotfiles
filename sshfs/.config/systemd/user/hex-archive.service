@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount Hex Archive over SSHFS
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/mkdir -p %h/mnt/hex-archive
+ExecStart=/usr/bin/sshfs -f -F %h/.ssh/config hex:/home/saito/archive %h/mnt/hex-archive -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,BatchMode=yes,ConnectTimeout=10
+ExecStop=/usr/bin/fusermount3 -u %h/mnt/hex-archive
+Restart=always
+RestartSec=15
+TimeoutStopSec=20
+
+[Install]
+WantedBy=default.target

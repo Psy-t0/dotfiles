@@ -71,6 +71,29 @@ stow --no-folding --target="$HOME" ssh
 `IdentityFile`には鍵のパスだけを記載し、鍵自体は各端末の`~/.ssh`に置く。
 `ssh/.ssh/`内は`config`と`.gitignore`以外をGitの対象外にしている。
 
+## SSHFS（Hex Archive）
+
+hex の `/home/saito/archive` を `~/mnt/hex-archive` にマウントする。
+ユーザーサービスとしてログイン時に起動し、接続できない場合は再試行する。
+Ubuntu では `sshfs` をインストールし、`ssh hex` が鍵認証で接続できるようにしておく。
+
+```bash
+sudo apt install sshfs
+stow --no-folding --target="$HOME" ssh sshfs
+systemctl --user daemon-reload
+systemctl --user enable --now hex-archive.service
+```
+
+既存の `~/.config/systemd/user/hex-archive.service` が通常ファイルの場合は、
+先にバックアップしてから Stow を実行する。
+サービス設定を変更したら `systemctl --user daemon-reload` を実行し、
+`systemctl --user restart hex-archive.service` で反映する。
+
+Nautilus では `~/mnt/hex-archive` を開き、ブックマークに追加する。
+ブックマークとサービスの有効化状態は各端末で管理する。
+停止と自動起動の解除は `systemctl --user disable --now hex-archive.service`。
+このマウントに `/etc/fstab` の設定は不要。
+
 ## tmux
 
 `tmux/.tmux.conf`をGNU Stowで`~/.tmux.conf`にリンクする。
